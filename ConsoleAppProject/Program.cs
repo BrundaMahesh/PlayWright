@@ -14,6 +14,9 @@ Console.WriteLine("Opened Browser");
 await page.GotoAsync("https://www.google.com");
 Console.WriteLine("Page Loaded");
 
+string title = await page.TitleAsync();
+Console.WriteLine(title);
+
 //await page.GetByTitle("Search").FillAsync("hp laptop");
 await page.Locator("#APjFqb").FillAsync("selenium");
 Console.WriteLine("Typed Search text");
@@ -21,3 +24,6 @@ Console.WriteLine("Typed Search text");
 ///await page.GetByRole("button").ClickAsync();
 await page.Locator("(//input[@value='Google Search'])[2]").ClickAsync();
 Console.WriteLine("Clicked Google Search Button");
+
+title = await page.TitleAsync();
+Console.WriteLine(title);
