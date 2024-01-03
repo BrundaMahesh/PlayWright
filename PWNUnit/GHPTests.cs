@@ -69,11 +69,11 @@ namespace PWNUnit
             await Page.Locator("(//input[@value='Google Search'])[2]").ClickAsync();
             Console.WriteLine("Clicked Google Search Button");
 
-            title = await Page.TitleAsync();
-            Console.WriteLine(title);
+            //title = await Page.TitleAsync();
+            //Console.WriteLine(title);
 
-            Assert.That(title, Does.Contain("selenium"));
-            //await Expect((ILocator)Page.TitleAsync()).Equals("selenium");
+            //Assert.That(title, Does.Contain("selenium"));
+            await Expect(Page).ToHaveTitleAsync("selenium - Google Search");
         }
     }
 }
