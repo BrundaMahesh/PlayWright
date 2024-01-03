@@ -10,15 +10,19 @@ namespace PWNUnit
         {
         }
 
-        ////manual instance
+        //manual instance
         //[Test]
         //public async Task Test1()
-        //{ 
+        //{
         //    //playwright startup
         //    using var playwright = await Playwright.CreateAsync();
 
         //    //launch browser
-        //    await using var browser = await playwright.Chromium.LaunchAsync();
+        //    await using var browser = await playwright.Chromium.LaunchAsync(
+        //        new BrowserTypeLaunchOptions
+        //        {
+        //            Headless = false
+        //        });
 
         //    //page instance
         //    var context = await browser.NewContextAsync();
