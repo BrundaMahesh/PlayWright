@@ -5,7 +5,11 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppProject", "ConsoleAppProject\ConsoleAppProject.csproj", "{923A9700-92CA-4A84-842C-F3D6E49B2CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWNUnit", "PWNUnit\PWNUnit.csproj", "{96E40691-AEB1-4672-8A02-8DD9E2B4770C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWNUnit", "PWNUnit\PWNUnit.csproj", "{96E40691-AEB1-4672-8A02-8DD9E2B4770C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assignments", "Assignments", "{D527032F-8D66-450E-B9C2-66A93C449B4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naaptol_03-01-2024", "Naaptol_03-01-2024\Naaptol_03-01-2024.csproj", "{52B4FC60-A400-4057-A09C-4D566220D862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{96E40691-AEB1-4672-8A02-8DD9E2B4770C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96E40691-AEB1-4672-8A02-8DD9E2B4770C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96E40691-AEB1-4672-8A02-8DD9E2B4770C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52B4FC60-A400-4057-A09C-4D566220D862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B4FC60-A400-4057-A09C-4D566220D862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B4FC60-A400-4057-A09C-4D566220D862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B4FC60-A400-4057-A09C-4D566220D862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52B4FC60-A400-4057-A09C-4D566220D862} = {D527032F-8D66-450E-B9C2-66A93C449B4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A51D0F4-D439-42DD-967A-2B2EEF8D6FA0}
