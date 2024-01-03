@@ -67,7 +67,15 @@ namespace PWNUnit
             await Console.Out.WriteLineAsync("Hello admin! is visible");
             */
 
-            await Expect(Page.Locator(selector: "text='Hello admin!'")).ToBeVisibleAsync();
+            await Task.WhenAll
+            (
+                Expect(Page.Locator(selector: "text='Hello admin!'")).ToBeVisibleAsync(),
+                Expect(Page.Locator(selector: "text='Log off'")).ToBeVisibleAsync()
+            );
+            await Console.Out.WriteLineAsync("Hello admin! is visible");
+            await Console.Out.WriteLineAsync("Log off is visible");
+
+
         }
     }
 }
