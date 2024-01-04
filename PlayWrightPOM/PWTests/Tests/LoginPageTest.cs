@@ -1,6 +1,8 @@
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using PWPOM.PWTests.Pages;
+using PWPOM.Test_Data_Classes;
+using PWPOM.Utilities;
 
 namespace PWPOM.PWTests.Tests
 {
@@ -8,10 +10,11 @@ namespace PWPOM.PWTests.Tests
     public class LoginPageTest : PageTest
     {
         Dictionary<string, string> Properties;
+        string? currdir;
         private void ReadConfigSettings()
         {
             Properties = new Dictionary<string, string>();
-            string? currdir = Directory.GetParent(@"../../../")?.FullName;
+            currdir = Directory.GetParent(@"../../../")?.FullName;
 
             string fileName = currdir + "/configsettings/config.properties";
             string[] lines = File.ReadAllLines(fileName);
@@ -30,15 +33,14 @@ namespace PWPOM.PWTests.Tests
         [SetUp]
         public async Task Setup()
         {
+            ReadConfigSettings();
             Console.WriteLine("Opened Browser");
             await Page.GotoAsync(Properties["baseUrl"]);
             Console.WriteLine("eaapp.somee home page loaded");
         }
 
         [Test]
-        [TestCase("admin", "password")]
-        [TestCase("admin", "****")]
-        public async Task LoginTest(string username, string password)
+        public async Task LoginTest()
         {
             /*
             LoginPage loginPage = new LoginPage(Page);
@@ -57,16 +59,35 @@ namespace PWPOM.PWTests.Tests
 
             NewLoginPage newLoginPage = new NewLoginPage(Page);
 
-            await newLoginPage.ClickLoginLink();
-            await Console.Out.WriteLineAsync("Clicked on Login link");
+            string? excelFilePath = currdir + "/Test Data/EA Data.xlsx";
+            string? sheetName = "LoginData";
 
-            await newLoginPage.Login(username, password);
-            await Console.Out.WriteLineAsync("Typed UserName");
-            await Console.Out.WriteLineAsync("Typed Password");
-            await Console.Out.WriteLineAsync("Clicked on Login button");
+            List<EAText> excelDataList = DataRead.ReadLoginData(excelFilePath, sheetName);
 
-            Assert.IsTrue(await newLoginPage.CheckhelloadminMessage());
-            await Console.Out.WriteLineAsync("Hello admin! is visible");
+            foreach (var excelData in excelDataList)
+            {
+
+                string? username = excelData.UserName;
+                string? password = excelData.Password;
+
+                await Console.Out.WriteLineAsync(username + password);
+                await newLoginPage.ClickLoginLink();
+                await Console.Out.WriteLineAsync("Clicked on Login link");
+
+                await newLoginPage.Login(username, password);
+                await Page.ScreenshotAsync(new()
+                {
+                    Path =  currdir + "/Screenshots/screenshot.png",
+                    FullPage = true,
+                });
+
+                await Console.Out.WriteLineAsync("Typed UserName");
+                await Console.Out.WriteLineAsync("Typed Password");
+                await Console.Out.WriteLineAsync("Clicked on Login button");
+
+                Assert.That(await newLoginPage.CheckhelloadminMessage(), Is.True);
+                await Console.Out.WriteLineAsync("Hello admin! is visible");
+            }
         }
     }
 }

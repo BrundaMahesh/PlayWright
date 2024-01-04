@@ -1,5 +1,5 @@
 ﻿using ExcelDataReader;
-using Google.Test_Data_Classes;
+using PWPOM.Test_Data_Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Google.Utilities
+namespace PWPOM.Utilities
 {
-    public class SearchDataRead
+    public class DataRead
     {
-        public static List<SearchData> ReadSearchText(string excelFilePath, string sheetName)
+        public static List<EAText> ReadLoginData(string excelFilePath, string sheetName)
         {
-            List<SearchData> excelDataList = new List<SearchData>();
+            List<EAText> excelDataList = new List<EAText>();
             Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
             using (var stream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -29,14 +29,15 @@ namespace Google.Utilities
                     });
 
                     var dataTable = result.Tables[sheetName];
-
+                    
                     if (dataTable != null)
                     {
                         foreach (DataRow row in dataTable.Rows)
                         {
-                            SearchData excelData = new SearchData
+                            EAText excelData = new EAText
                             {
-                                SearchText = GetValueOrDefault(row, "searchtext")
+                               UserName = GetValueOrDefault(row, "un"),
+                               Password = GetValueOrDefault(row, "pwd")
                             };
 
                             excelDataList.Add(excelData);
