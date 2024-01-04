@@ -16,7 +16,10 @@ namespace PWNUnit
         public async Task SetUp()
         {
             Console.WriteLine("Opened Browser");
-            await Page.GotoAsync("http://eaapp.somee.com/");
+            await Page.GotoAsync("http://eaapp.somee.com/",new PageGotoOptions
+            { 
+                Timeout = 3000, WaitUntil = WaitUntilState.DOMContentLoaded
+            });
             Console.WriteLine("eaapp.somee home page loaded");
         }
 
@@ -30,7 +33,10 @@ namespace PWNUnit
             await loginLink.ClickAsync();
             */
 
-            await Page.ClickAsync(selector: "text=Login");
+            await Page.ClickAsync(selector: "text=Login", new PageClickOptions
+            {
+                Timeout = 1000
+            });
 
             await Console.Out.WriteLineAsync("Clicked on Login link");
 
@@ -48,9 +54,15 @@ namespace PWNUnit
             await Console.Out.WriteLineAsync("Typed Password");
             */
 
-            await Page.FillAsync(selector: "#UserName", "admin");
+            await Page.FillAsync(selector: "#UserName", "admin", new PageFillOptions
+            { 
+                Timeout = 1000
+            });
             await Console.Out.WriteLineAsync("Typed UserName");
-            await Page.FillAsync(selector: "#Password", "password");
+            await Page.FillAsync(selector: "#Password", "password",new PageFillOptions
+            { 
+                Timeout = 2000
+            });
             await Console.Out.WriteLineAsync("Typed Password");
 
             //await Page.Locator("//input[@value='Log in']").ClickAsync();
