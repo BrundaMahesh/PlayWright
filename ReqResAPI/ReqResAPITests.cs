@@ -21,9 +21,10 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task GetAllUsers()
+        [TestCase(2)]
+        public async Task GetAllUsers(int page)
         {
-            var getResponse = await requestContext.GetAsync(url: "users?page=2");
+            var getResponse = await requestContext.GetAsync(url: "users?page=" + page);
 
             await Console.Out.WriteLineAsync("Response : " + getResponse.ToString());
             await Console.Out.WriteLineAsync("Code : " + getResponse.Status);
@@ -38,9 +39,10 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task GetSingleUser()
+        [TestCase(2)]
+        public async Task GetSingleUser(int uid)
         {
-            var getResponse = await requestContext.GetAsync(url: "users/2");
+            var getResponse = await requestContext.GetAsync(url: "users/" + uid);
 
             await Console.Out.WriteLineAsync("Response : " + getResponse.ToString());
             await Console.Out.WriteLineAsync("Code : " + getResponse.Status);
@@ -55,9 +57,10 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task GetSingleUserNotFound()
+        [TestCase(23)]
+        public async Task GetSingleUserNotFound(int uid)
         {
-            var getResponse = await requestContext.GetAsync(url: "users/23");
+            var getResponse = await requestContext.GetAsync(url: "users/" + uid);
 
             await Console.Out.WriteLineAsync("Response : " + getResponse.ToString());
             await Console.Out.WriteLineAsync("Code : " + getResponse.Status);
@@ -73,12 +76,13 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task PostUser()
+        [TestCase("John","Engineer")]
+        public async Task PostUser(string uname,string ujob)
         {
             var postData = new
             {
-                name = "John",
-                job = "Engineer"
+                name = uname,
+                job = ujob
             };
 
             var jsonData = System.Text.Json.JsonSerializer.Serialize(postData);   
@@ -99,17 +103,18 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task PutUser()
+        [TestCase(2, "John", "Engineer")]
+        public async Task PutUser(int uid, string uname, string ujob)
         {
             var putData = new
             {
-                name = "John",
-                job = "Engineer"
+                name = uname,
+                job = ujob
             };
 
             var jsonData = System.Text.Json.JsonSerializer.Serialize(putData);
 
-            var putResponse = await requestContext.PutAsync(url: "users/2",
+            var putResponse = await requestContext.PutAsync(url: "users/" + uid,
                 new APIRequestContextOptions
                 {
                     Data = jsonData
@@ -125,17 +130,18 @@ namespace PWReqResAPI
         }
 
         [Test]
-        public async Task DeleteUser()
+        [TestCase(2)]
+        public async Task DeleteUser(int uid)
         {
            
-            var deleteResponse = await requestContext.PutAsync(url: "users/2");
+            var deleteResponse = await requestContext.DeleteAsync(url: "users/" + uid);
 
             await Console.Out.WriteLineAsync("Response : " + deleteResponse.ToString());
             await Console.Out.WriteLineAsync("Code : " + deleteResponse.Status);
             await Console.Out.WriteLineAsync("Text : " + deleteResponse.StatusText);
 
             Assert.That(deleteResponse, Is.Not.Null);
-            Assert.That(deleteResponse.Status.Equals(200));
+            Assert.That(deleteResponse.Status.Equals(204));
 
         }
 
