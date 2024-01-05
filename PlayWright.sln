@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naaptol_03-01-2024", "Naapt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWPOM", "PlayWrightPOM\PWPOM.csproj", "{683AE7C9-8F2F-46BA-BD4C-1B1527C4C32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon_04-01-2024", "Amazon_04-01-2024\Amazon_04-01-2024.csproj", "{AC6F7697-C495-4B7F-A081-6A4B158365FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon_04-01-2024", "Amazon_04-01-2024\Amazon_04-01-2024.csproj", "{AC6F7697-C495-4B7F-A081-6A4B158365FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWReqResAPI", "ReqResAPI\PWReqResAPI.csproj", "{4067702D-7EC9-4533-9A44-5B487B2CFF1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{AC6F7697-C495-4B7F-A081-6A4B158365FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6F7697-C495-4B7F-A081-6A4B158365FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6F7697-C495-4B7F-A081-6A4B158365FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4067702D-7EC9-4533-9A44-5B487B2CFF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4067702D-7EC9-4533-9A44-5B487B2CFF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4067702D-7EC9-4533-9A44-5B487B2CFF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4067702D-7EC9-4533-9A44-5B487B2CFF1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
