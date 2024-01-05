@@ -95,8 +95,48 @@ namespace PWReqResAPI
 
             Assert.That(postResponse, Is.Not.Null);
             Assert.That(postResponse.Status.Equals(201));
-
             
+        }
+
+        [Test]
+        public async Task PutUser()
+        {
+            var putData = new
+            {
+                name = "John",
+                job = "Engineer"
+            };
+
+            var jsonData = System.Text.Json.JsonSerializer.Serialize(putData);
+
+            var putResponse = await requestContext.PutAsync(url: "users/2",
+                new APIRequestContextOptions
+                {
+                    Data = jsonData
+                });
+
+            await Console.Out.WriteLineAsync("Response : " + putResponse.ToString());
+            await Console.Out.WriteLineAsync("Code : " + putResponse.Status);
+            await Console.Out.WriteLineAsync("Text : " + putResponse.StatusText);
+
+            Assert.That(putResponse, Is.Not.Null);
+            Assert.That(putResponse.Status.Equals(200));
+
+        }
+
+        [Test]
+        public async Task DeleteUser()
+        {
+           
+            var deleteResponse = await requestContext.PutAsync(url: "users/2");
+
+            await Console.Out.WriteLineAsync("Response : " + deleteResponse.ToString());
+            await Console.Out.WriteLineAsync("Code : " + deleteResponse.Status);
+            await Console.Out.WriteLineAsync("Text : " + deleteResponse.StatusText);
+
+            Assert.That(deleteResponse, Is.Not.Null);
+            Assert.That(deleteResponse.Status.Equals(200));
+
         }
 
     }
