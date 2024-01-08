@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JsonplaceholderAPI
+namespace JsonplaceholderAPI_06_01_2024
 {
     internal class JsonplaceholderAPITests
     {

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon_04-01-2024", "Amazon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWReqResAPI", "ReqResAPI\PWReqResAPI.csproj", "{4067702D-7EC9-4533-9A44-5B487B2CFF1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonplaceholderAPI", "JsonplaceholderAPI\JsonplaceholderAPI.csproj", "{E66ED61C-E54D-4EA2-93B2-12B18622B79B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonplaceholderAPI_06-01-2024", "JsonplaceholderAPI\JsonplaceholderAPI_06-01-2024.csproj", "{E66ED61C-E54D-4EA2-93B2-12B18622B79B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
